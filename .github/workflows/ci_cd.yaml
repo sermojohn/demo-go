@@ -11,10 +11,14 @@ jobs:
   pre-commit-check:
     name: pre-commit check
     runs-on: ubuntu-20.04
-    if: github.repository == 'sermojohn/demo-go' 
+    if: github.repository == 'sermojohn/demo-go'
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - uses: pre-commit/action@v2.0.2
       - name: run
         run: |
-          echo "hello world!"
-        
+          pre-commit run --all-files
+
