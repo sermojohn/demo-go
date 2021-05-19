@@ -32,6 +32,11 @@ jobs:
     needs: [pre-commit]
     if: github.repository == 'sermojohn/demo-go'
     steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          stable: true
+          go-version: '1.16'
       - name: go test
         run: go test ./...
 
