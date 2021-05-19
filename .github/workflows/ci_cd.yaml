@@ -39,8 +39,7 @@ jobs:
     name: push docker images
     runs-on: ubuntu-20.04
     needs: [pre-commit, unit-tests]
-    if: github.repository == 'sermojohn/demo-go'
-    if: github.ref == "refs/heads/main"
+    if: ${{ github.repository == 'sermojohn/demo-go' && github.ref == "refs/heads/main" }}
     steps:
       - name: Login to DockerHub
         uses: docker/login-action@v1
