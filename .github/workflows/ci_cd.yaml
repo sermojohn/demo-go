@@ -10,8 +10,8 @@ jobs:
 
   pre-commit-check:
     name: pre-commit check
-    if: github.repository == "sermojohn/demo-go" 
     runs-on: ubuntu-20.04
+    if: github.repository == 'sermojohn/demo-go' 
     steps:
       - uses: actions/checkout@v2
       - name: run
