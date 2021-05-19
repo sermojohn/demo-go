@@ -8,5 +8,3 @@ go get -u github.com/sqs/goreturns \
         && go get -u github.com/golangci/golangci-lint/cmd/golangci-lint@v1.40.0
 popd
 rm -rf $tmp_dir
-
-
