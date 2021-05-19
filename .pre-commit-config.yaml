@@ -1,5 +1,9 @@
 
 repos:
+- repo: https://github.com/hadolint/hadolint
+  rev: v2.4.1
+  hooks:
+    - id: hadolint-docker
 - repo: git://github.com/pre-commit/pre-commit-hooks
   rev: v3.4.0
   hooks:
@@ -18,7 +22,7 @@ repos:
   rev: 3.7.3
   hooks:
     - id: flake8
-      exclude: .git, db/data/*
+      exclude: \.git, db\/data\/.*
 - repo: https://github.com/tekwizely/pre-commit-golang
   rev: v0.8.2
   hooks:
