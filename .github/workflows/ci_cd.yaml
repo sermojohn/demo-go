@@ -8,8 +8,8 @@ on:
 
 jobs:
 
-  pre-commit-check:
-    name: pre-commit check
+  pre-commit:
+    name: check pre-commit
     runs-on: ubuntu-20.04
     if: github.repository == 'sermojohn/demo-go'
     steps:
@@ -25,8 +25,23 @@ jobs:
         run: |
           make install-deps
       - uses: pre-commit/action@v2.0.2
+
+  unit-tests:
+    name: run unit tests
+    runs-on: ubuntu-20.04
+    needs: [pre-commit]
+    if: github.repository == 'sermojohn/demo-go'
+    steps:
       - name: go test
         run: go test ./...
+
+  docker-images:
+    name: push docker images
+    runs-on: ubuntu-20.04
+    needs: [pre-commit, unit-tests]
+    if: github.repository == 'sermojohn/demo-go'
+    if: github.ref == "refs/heads/main"
+    steps:
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
