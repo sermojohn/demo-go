@@ -2,7 +2,6 @@
 FROM golang:1.15-alpine AS builder
 
 WORKDIR /build/
-USER root
 
 COPY . ./
 

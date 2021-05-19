@@ -20,10 +20,8 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           stable: true
-          go-version: '1.15.x' 
-      - uses: pre-commit/action@v2.0.2
-      - name: run
+          go-version: '1.15'
+      - name: install go deps
         run: |
           make -I ./data-aggregator/ install-deps
-          pre-commit run --all-files
-
+      - uses: pre-commit/action@v2.0.2
