@@ -8,6 +8,17 @@ on:
 
 jobs:
 
+  artifact-test:
+    name: test of gh action artifact
+    runs-on: ubuntu-20.04
+    steps:
+      - run: mkdir -p path/to/artifact
+      - run: echo hello > path/to/artifact/world.txt
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: path/to/artifact/world.txt
+
   pre-commit:
     name: check pre-commit
     runs-on: ubuntu-20.04
