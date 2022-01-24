@@ -8,6 +8,15 @@ on:
 
 jobs:
 
+  debug:
+    name: debug GH context
+    runs-on: ubuntu-20.04
+    env:
+      GITHUB_CONTEXT: ${{ toJson(github) }}
+    steps:
+      - name: Show GitHub context
+        run: echo "$GITHUB_CONTEXT"
+
   pre-commit:
     name: check pre-commit
     runs-on: ubuntu-20.04
